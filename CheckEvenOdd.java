@@ -1,14 +1,13 @@
-package day2;
+package day3;
 
 public class CheckEvenOdd {
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int n=20;
-		if(n%2==0)
-			System.out.println("Entered number is even");
-		else
-			System.out.println("Entered number is odd");
+	int i=2;
+	if(i%2==0) {
+		System.out.println("even no.."+i);
 	}
-
+	else {
+		System.out.println("odd no.."+i);
+	}
+	}
 }
