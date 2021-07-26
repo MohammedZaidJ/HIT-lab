@@ -1,39 +1,26 @@
-package day11;
-import java.util.Date;
+package Revision4;
+
 public class ThreadDemo2 {
-	public static void main(String[] args) throws Exception{
-		VaccinationCenter vc =new VaccinationCenter();
-		Thread t=Thread.currentThread();
-		t.setName("zaid");
-		System.out.println(new Date());
-		System.out.println("before comming to class..");
-		Thread kala=new Thread(new jobtokala(vc),"kala");
-		kala.start();
-		System.out.println("Take class ..for 7-9 golden Batch.."+new Date());
+	public ThreadDemo2() {
+		System.out.println("cons called");
+		new Thread(new Runnable1()).start();
 	}
-}
-class jobtokala implements Runnable{
-	VaccinationCenter vc;
-	public jobtokala(VaccinationCenter vc) {
-		this.vc=vc;
-	}
-	public void run() {
-		System.out.println("job is given to kala.. ");
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("main thread line 1 ...");
+		new ThreadDemo2();
 		try {
-			vc.getToken();
-		}
-		catch(Exception e){
-			e.printStackTrace();
-			
-		}
+			Thread.sleep(4000);
+		}catch(Exception e) {}
+		System.out.println("main thread line 2 ...");
+
 	}
+
 }
-class VaccinationCenter{
-	public void getToken()throws Exception{
-		Thread t=Thread.currentThread();
-		String name=t.getName();
-		System.out.println(name+"..standing in queue for token..");
-		Thread.sleep(10000);
-		System.out.println("token received.."+new Date());
+class Runnable1 implements Runnable{
+	@Override
+	public void run() {
+		System.out.println("child thread called...");
 	}
 }

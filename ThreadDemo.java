@@ -1,39 +1,47 @@
-package day13;
+package Revision4;
 
 public class ThreadDemo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        Thread t = new Thread();
-        dryfruit df=new dryfruit();
-        veg vg=new veg();
-        bike bk=new bike();
-        Thread zaid=new Thread(df,"gayas");
-        Thread taqi=new Thread(bk,"bireadd taqi");
-        Thread vip=new Thread(vg,"buy vip");
-        zaid.start();
-        taqi.start();
-        vip.start();
-        System.out.println("game over...:>");
-        
+		System.out.println("First line");
+		System.out.println("second line");
+	    //new ThreadDemo().met();
+	    // by using lambda hear
+	    
+	    //new Thread(()->{new ThreadDemo().met1();}).start();
+		// using by runable ..
+		
+//	    new Thread(new Runnable() {
+//	    	@Override 
+//	    	public void run() {
+//	    		new ThreadDemo().met1();
+//	    	}
+//	    }).start();
+//	    //the other method
+	    //by using myRunnable ...
+		new Thread(new MyRunnable()).start();
+		//new Thread(new MyRunnable()).start();
+	    System.out.println("four line");
+		
+
+	}
+//	public void met() {
+//		try {Thread.sleep(4000);}catch(Exception e) {}
+//		System.out.println("third line");
+//		
+//	}
+    	public void met1() {
+		try {Thread.sleep(4000);}catch(Exception e) {}
+		System.out.println("third.one line");
+		
+	}
+}
+	class MyRunnable implements Runnable{
+		@Override
+		public void run() {
+			new ThreadDemo().met1();
+		}
 	}
 
-}
-class dryfruit implements Runnable{
-	@Override
-	public void run(){
-		System.out.println("dryfruit are brought  by him..."+Thread.currentThread().getName());
-	}
-}
-class veg implements Runnable{
-	@Override
-	public void run(){
-		System.out.println("vegetable brought  by him..."+Thread.currentThread().getName());
-	}
-}
-class  bike implements Runnable{
-	@Override
-	public void run() {
-		System.out.println("bike is brought by him...."+Thread.currentThread().getName());
-	}
-}
+
